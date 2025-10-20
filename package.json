@@ -16,9 +16,7 @@
     "jspdf": "^2.5.1",
     "html2canvas": "^1.4.1",
     "react-to-print": "^2.14.16",
-    "@react-pdf/renderer": "^3.4.4",
-    "puppeteer-core": "^22.12.1",
-    "@sparticuz/chromium": "^127.0.0"
+    "@react-pdf/renderer": "^3.4.4"
   },
   "devDependencies": {
     "typescript": "^5",
