@@ -67,7 +67,7 @@ const Header: React.FC = () => {
           <div className="flex flex-wrap justify-center items-center gap-6 mb-6 text-gray-600">
             <div className="flex items-center gap-2">
               <FaEnvelope className="text-primary-600" />
-              <span>leitsidw@gmail.com</span>
+              <span>letisidw@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <FaPhone className="text-primary-600" />
