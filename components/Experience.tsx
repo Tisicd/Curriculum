@@ -4,6 +4,22 @@ import { FaCalendarAlt, FaBuilding } from 'react-icons/fa'
 const Experience: React.FC = () => {
   const experiences = [
     {
+      title: "Practicante en Desarrollo e Innovación Tecnológica Educativa",
+      company: "Instituto de Investigaciones Económicas – Facultad de Ciencias Económicas, Universidad Central del Ecuador",
+      period: "Agosto 2024 – Agosto 2025",
+      location: "360 horas",
+      achievements: [
+        "Desarrollo de aplicación web fullstack en Python (Flask + PostgreSQL + Redis) bajo arquitectura MVC para disminuir la repitencia estudiantil",
+        "Implementación de sistema de autenticación completo (login, registro, recuperación de contraseñas, JWT y validación de correos institucionales)",
+        "Creación de paneles personalizados para estudiantes, docentes y administración con control de archivos y estadísticas de uso",
+        "Integración de herramientas académicas externas (GeoGebra, Desmos, Notion, Grammarly, Wolfram Alpha, Photomath)",
+        "Implementación de módulo multimedia con subida, visualización y gestión de videos educativos y chatbots de apoyo",
+        "Configuración de Redis para manejo de sesiones seguras, despliegue en entorno Docker y control de versiones con GitHub",
+        "Desarrollo de calculadoras académicas interactivas mediante JavaScript y MathJS como recurso adicional de apoyo",
+        "Elaboración de videos tutoriales sobre herramientas educativas (MagicSchool, Overleaf, conversión de fórmulas matemáticas)"
+      ]
+    },
+    {
       title: "Técnico Audiovisual y Soporte IT",
       company: "Productora Independiente",
       period: "2023 - 2024",
