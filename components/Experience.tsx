@@ -20,6 +20,21 @@ const Experience: React.FC = () => {
       ]
     },
     {
+      title: "Agente de Atención al Cliente y Gestión Comercial",
+      company: "Conecta Plus",
+      period: "2024 - 2025",
+      location: "Ecuador",
+      achievements: [
+        "Atención y gestión de clientes a través de canales telefónicos, garantizando una comunicación clara y orientada a soluciones",
+        "Resolución de consultas, incidencias y requerimientos, manteniendo altos estándares de calidad y satisfacción del cliente",
+        "Cumplimiento de indicadores operativos (KPIs) relacionados con productividad, tiempo de atención y calidad de servicio",
+        "Registro y actualización de información en sistemas CRM para seguimiento eficiente de casos y clientes",
+        "Aplicación de técnicas de comunicación efectiva y negociación para fortalecer la retención y fidelización de clientes",
+        "Manejo simultáneo de múltiples solicitudes en entornos de alta demanda, priorizando tareas y tiempos de respuesta",
+        "Colaboración con equipos de soporte y supervisión para la escalación y resolución oportuna de casos complejos"
+      ]
+    },
+    {
       title: "Técnico Audiovisual y Soporte IT",
       company: "Productora Independiente",
       period: "2023 - 2024",
