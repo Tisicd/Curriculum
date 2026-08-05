@@ -1,52 +1,54 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const About: React.FC = () => {
   const languages = [
-    { name: 'Español', percentage: 100 },
-    { name: 'Inglés', percentage: 65 },
-    { name: 'Francés', percentage: 55 },
+    { name: 'Español', label: 'Nativo' },
+    { name: 'Inglés', label: 'B1 — Intermedio' },
+    { name: 'Francés', label: 'A2 — Básico' },
   ]
 
   return (
-    <section className="card animate-fade-in">
-      <h2 className="section-title">Sobre Mí</h2>
-      <div className="prose max-w-none">
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Profesional competente y responsable. Destaco por mi habilidad para resolver problemas 
-          de forma rápida y eficiente, colaborando con equipos técnicos y creativos para cumplir 
-          con los objetivos de cada proyecto en tiempo y forma. Deseo aportar mi precisión y 
-          atención al detalle a un nuevo desafío.
-        </p>
-        <p className="text-gray-700 leading-relaxed mb-6">
-          Mi experiencia incluye manejo técnico de equipos audiovisuales, configuración de audio, 
-          atención al cliente en eventos masivos y trabajo en entornos de alta demanda. 
-          Busco aplicar mis conocimientos técnicos y habilidades de comunicación en 
-          proyectos desafiantes que me permitan seguir creciendo profesionalmente.
-        </p>
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <span className="section-label">Sobre mí</span>
 
-        <div className="border-t border-gray-200 pt-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b-2 border-primary-500 pb-2">
-            Idiomas
-          </h3>
-          <div className="space-y-4">
-            {languages.map((lang, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="font-medium text-gray-800">{lang.name}</span>
-                  <span className="text-sm text-gray-600">{lang.percentage}%</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-primary-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${lang.percentage}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="prose-cv max-w-2xl">
+        <p>
+          Egresado de Ingeniería en Sistemas Informáticos de la Universidad Central del Ecuador,
+          con malla curricular completa y título en trámite. Mi formación combina fundamentos
+          sólidos en ciencias de la computación con experiencia práctica en desarrollo fullstack,
+          automatización de procesos y soluciones con inteligencia artificial.
+        </p>
+        <p>
+          He participado en proyectos que abarcan desde plataformas web con arquitectura hexagonal
+          (FastAPI, PostgreSQL, Redis, Next.js) hasta sistemas de GPS en tiempo real con módulos
+          de detección acústica de anomalías. Actualmente desarrollo un motor de validación de pagos.
+        </p>
+        <p>
+          Me caracterizo por mi capacidad de aprendizaje autónomo, atención al detalle y enfoque
+          en resultados. Disfruto trabajar en entornos colaborativos donde pueda aportar soluciones
+          técnicas creativas mientras construyo una trayectoria sólida en el ecosistema tecnológico
+          de Ecuador y Latinoamérica.
+        </p>
+      </div>
+
+      <div className="mt-10 pt-8 border-t border-neutral-200">
+        <h3 className="font-display text-sm font-medium text-[#171717] mb-4">Idiomas</h3>
+        <div className="flex flex-wrap gap-6">
+          {languages.map((lang, i) => (
+            <div key={i} className="flex items-baseline gap-2">
+              <span className="font-medium text-[#171717] text-sm">{lang.name}</span>
+              <span className="text-xs text-neutral-500">{lang.label}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

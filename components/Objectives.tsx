@@ -1,28 +1,28 @@
 import React from 'react'
-import { FaBullseye } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 const Objectives: React.FC = () => {
-  const objectives = [
-    'Aplicar conocimientos en desarrollo (React/Node.js) y automatización con Python.',
-    'Aportar en soporte técnico especializado con foco en atención al cliente y resolución de incidentes.',
-    'Desarrollar carrera en el sector IT ecuatoriano participando en proyectos de impacto.'
-  ]
-
   return (
-    <section className="card animate-fade-in">
-      <h2 className="section-title">Objetivo Profesional</h2>
-      <ul className="space-y-2">
-        {objectives.map((item, idx) => (
-          <li key={idx} className="flex items-start gap-3">
-            <span className="mt-1 text-primary-600"><FaBullseye /></span>
-            <span className="text-gray-700">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <span className="section-label">Objetivo</span>
+      <p className="text-lg leading-relaxed text-neutral-700 max-w-2xl">
+        Integrarme como{' '}
+        <strong className="font-semibold text-[#171717]">
+          Ingeniero en Sistemas con enfoque en IA y automatización
+        </strong>{' '}
+        en un equipo donde pueda aplicar mis habilidades en desarrollo de software,
+        arquitecturas backend modernas y soluciones basadas en inteligencia artificial.
+        Busco contribuir desde el primer día en proyectos de impacto —ya sea en pasantías,
+        posiciones trainee o colaboraciones freelance— mientras construyo una trayectoria
+        sólida en el sector tecnológico ecuatoriano y latinoamericano.
+      </p>
+    </motion.section>
   )
 }
 
 export default Objectives
-
-

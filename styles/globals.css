@@ -6,46 +6,46 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    @apply font-sans bg-[#fafafa] text-[#171717] antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent-100 text-accent-800;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  .section-label {
+    @apply font-display text-xs font-medium tracking-[0.15em] uppercase text-accent-500 mb-4;
   }
-  
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+
+  .section-heading {
+    @apply font-display text-2xl font-semibold text-[#171717] mb-6 tracking-tight;
   }
-  
-  .section-title {
-    @apply text-2xl font-bold text-gray-900 mb-6 border-b-2 border-primary-500 pb-2;
+
+  .skill-pill {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
+           bg-accent-50 text-accent-700 border border-accent-100
+           transition-colors duration-200 hover:bg-accent-100 hover:border-accent-200;
   }
-  
-  .skill-tag {
-    @apply bg-primary-100 text-primary-800 px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-200 hover:scale-105;
+
+  .prose-cv {
+    @apply text-[15px] leading-relaxed text-neutral-700;
   }
-  
-  .card {
-    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200;
+
+  .prose-cv p {
+    @apply mb-4;
   }
-  
-  .no-select {
-    -webkit-user-select: none;
-            user-select: none;
+
+  .prose-cv strong {
+    @apply font-semibold text-[#171717];
   }
-  .no-pointer {
-    pointer-events: none;
-  }
-  
-  /* Estilos específicos para impresión / PDF */
-  @media print {
-    .no-print { display: none !important; }
-    .animate-fade-in, .animate-slide-up, .hover\:scale-105, .hover\:shadow-lg { animation: none !important; transition: none !important; }
-    .card { box-shadow: none !important; }
-    body { background: #ffffff !important; }
-  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #ffffff !important; }
+  .skill-pill { border-color: #e5e7eb !important; }
 }

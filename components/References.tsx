@@ -1,49 +1,50 @@
 import React from 'react'
-import { FaPhone, FaUser } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { FaPhone } from 'react-icons/fa'
 
 const References: React.FC = () => {
   const references = [
     {
-      name: "Wellington Yepez",
-      position: "Seguridad y Prevención",
-      phone: "(+593) 99 894 7868"
+      name: 'Wellington Yepez',
+      role: 'Seguridad y Prevención',
+      phone: '099 993 0086',
     },
     {
-      name: "Jefferson Albuja",
-      position: "Desarrollador Senior",
-      phone: "(+593) 98 716 4499"
+      name: 'Jefferson Albuja',
+      role: 'Desarrollador Senior',
+      phone: '096 299 2697',
     },
     {
-      name: "Christian Pilapanta",
-      position: "Productor Musical",
-      phone: "(+593) 98 279 7446"
-    }
+      name: 'Christian Pilapanta',
+      role: 'Productor Musical',
+      phone: '098 468 1015',
+    },
   ]
 
   return (
-    <section className="card animate-fade-in">
-      <h2 className="section-title">Referencias</h2>
-      <div className="flex flex-col gap-4">
-        {references.map((ref, index) => (
-          <div key={index} className="bg-gray-50 rounded-lg p-4 animate-slide-up" 
-               style={{ animationDelay: `${index * 0.1}s` }}>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                <FaUser className="text-primary-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">{ref.name}</h3>
-                <p className="text-sm text-gray-600">{ref.position}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 text-gray-700">
-              <FaPhone className="text-primary-600 text-sm" />
-              <span className="text-sm">{ref.phone}</span>
-            </div>
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <span className="section-label">Referencias</span>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {references.map((ref, i) => (
+          <div key={i}>
+            <p className="font-display text-sm font-semibold text-[#171717]">
+              {ref.name}
+            </p>
+            <p className="text-xs text-neutral-500 mt-0.5">{ref.role}</p>
+            <p className="text-xs text-neutral-600 mt-2 flex items-center gap-1.5">
+              <FaPhone className="text-[10px] text-accent-400" />
+              {ref.phone}
+            </p>
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }
 

@@ -1,15 +1,22 @@
-import React from 'react'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaDownload } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react-icons/fa'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+}
 
 const Header: React.FC = () => {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
   const downloadCV = () => {
-    // Función para descargar CV en PDF con fondo blanco y alta resolución
     const element = document.getElementById('cv-content') as HTMLElement | null
     if (!element) return
 
     const originalClassName = element.className
-    // Forzar fondo blanco temporal para evitar tono grisáceo en el PDF
     element.classList.add('bg-white')
 
     import('html2canvas').then((html2canvas) => {
@@ -42,60 +49,114 @@ const Header: React.FC = () => {
             heightLeft -= pageHeight
           }
 
-          pdf.save('CV_Profesional.pdf')
-          // Restaurar clases originales
+          pdf.save('Christian_Tisalema_CV.pdf')
           element.className = originalClassName
         })
       })
     })
   }
 
+  const transition = { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const }
+
   return (
-    <header className="bg-white shadow-lg">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center">
-          <div className="mx-auto mb-4 w-24 h-24 rounded-full overflow-hidden ring-2 ring-primary-200 no-select no-pointer">
-            <Image src={"/assets/images/avatar.png"} alt="Foto de perfil" width={96} height={96} className="object-cover" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Christian Tisalema</h1>
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <h2 className="text-xl text-primary-600">Ingeniería en Sistemas</h2>
-            <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full border border-green-300">Disponibilidad inmediata</span>
-          </div>
-          <p className="text-gray-600 mb-6">Profesional competente y responsable con experiencia en atención al cliente, soporte técnico y producción audiovisual</p>
-          
-          <div className="flex flex-wrap justify-center items-center gap-6 mb-6 text-gray-600">
-            <div className="flex items-center gap-2">
-              <FaEnvelope className="text-primary-600" />
-              <span>letisidw@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaPhone className="text-primary-600" />
-              <span>(+593) 96 381 9562</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaMapMarkerAlt className="text-primary-600" />
-              <span>Av. Mariscal Sucre N71877 y La Esperanza</span>
-            </div>
+    <header className="relative border-b border-neutral-200 bg-white">
+      <div className="max-w-3xl mx-auto px-6 md:px-8 py-16 md:py-24">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+          <div className="flex-1">
+            {mounted && (
+              <>
+                <motion.div
+                  {...fadeInUp}
+                  transition={{ ...transition, delay: 0 }}
+                >
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden mb-6">
+                    <Image
+                      src="/assets/images/avatar.png"
+                      alt="Christian Tisalema"
+                      width={64}
+                      height={64}
+                      className="object-cover"
+                    />
+                  </div>
+                  <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-[#171717] mb-3">
+                    Christian Tisalema
+                  </h1>
+                  <p className="font-display text-lg md:text-xl text-accent-600 font-medium mb-2">
+                    Ingeniero en Sistemas con enfoque en IA y automatización
+                  </p>
+                  <p className="text-[13px] text-neutral-500 mt-1">
+                    Egresado — Malla curricular completa — Título en trámite (examen complexivo, diciembre 2026)
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  {...fadeInUp}
+                  transition={{ ...transition, delay: 0.1 }}
+                  className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-neutral-600 mt-6"
+                >
+                  <a href="mailto:letisidw@gmail.com" className="inline-flex items-center gap-2 hover:text-accent-600 transition-colors">
+                    <FaEnvelope className="text-accent-400 text-xs" />
+                    <span>letisidw@gmail.com</span>
+                  </a>
+                  <a href="tel:+593963819562" className="inline-flex items-center gap-2 hover:text-accent-600 transition-colors">
+                    <FaPhone className="text-accent-400 text-xs" />
+                    <span>(+593) 96 381 9562</span>
+                  </a>
+                  <span className="inline-flex items-center gap-2">
+                    <FaMapMarkerAlt className="text-accent-400 text-xs" />
+                    <span>Quito, Ecuador</span>
+                  </span>
+                </motion.div>
+
+                <motion.div
+                  {...fadeInUp}
+                  transition={{ ...transition, delay: 0.2 }}
+                  className="flex items-center gap-5 mt-5"
+                >
+                  <a
+                    href="https://www.linkedin.com/in/david-tisalema-507043359"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
+                  >
+                    <FaLinkedin />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href="https://github.com/ChrisTisalema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
+                  >
+                    <FaGithub />
+                    <span>GitHub</span>
+                  </a>
+                </motion.div>
+              </>
+            )}
           </div>
 
-          <div className="flex justify-center gap-4 mb-6">
-            <a 
-              href="https://www.linkedin.com/in/david-tisalema-507043359" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+          {mounted && (
+            <motion.div
+              {...fadeInUp}
+              transition={{ ...transition, delay: 0.3 }}
+              className="no-print flex-shrink-0"
             >
-              <FaLinkedin className="text-xl" />
-              <span>LinkedIn</span>
-            </a>
-          </div>
-
-          <div className="no-print">
-            <div className="flex justify-center">
-              <></>
-            </div>
-          </div>
+              <button
+                onClick={downloadCV}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                           border border-accent-200 text-accent-700 text-sm font-medium
+                           hover:bg-accent-50 hover:border-accent-300 transition-colors duration-200"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Descargar CV
+              </button>
+            </motion.div>
+          )}
         </div>
       </div>
     </header>

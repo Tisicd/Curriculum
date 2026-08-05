@@ -1,38 +1,42 @@
 import React from 'react'
-import { FaCertificate, FaBook } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 const Courses: React.FC = () => {
   const courses = [
     {
-      title: "Cajero Comercial y Bancario",
-      description: "Orientado a desempeñar competentemente el rol de cajero bancario, asegurando familiaridad con los aspectos técnicos, normativos y de atención al cliente de la profesión."
+      title: 'Cajero Comercial y Bancario',
+      description:
+        'Formación orientada al desempeño competente del rol de cajero bancario, cubriendo aspectos técnicos, normativos y de atención al cliente.',
     },
     {
-      title: "Asistente de Crédito y Cobranzas",
-      description: "Enfocado en equipar a las personas con las habilidades analíticas, técnicas y de comunicación necesarias para gestionar efectivamente créditos y cobranzas, asegurando el cumplimiento de regulaciones y políticas establecidas."
-    }
+      title: 'Asistente de Crédito y Cobranzas',
+      description:
+        'Habilidades analíticas, técnicas y de comunicación para la gestión efectiva de créditos y cobranzas, asegurando el cumplimiento de regulaciones y políticas establecidas.',
+    },
   ]
 
   return (
-    <section className="card animate-fade-in">
-      <h2 className="section-title">Cursos y Capacitaciones</h2>
-      <div className="space-y-6">
-        {courses.map((course, index) => (
-          <div key={index} className="border-l-4 border-primary-200 pl-6 animate-slide-up" 
-               style={{ animationDelay: `${index * 0.2}s` }}>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <FaCertificate className="text-primary-600 text-xl" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{course.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{course.description}</p>
-              </div>
-            </div>
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <span className="section-label">Cursos</span>
+
+      <div className="space-y-5">
+        {courses.map((course, i) => (
+          <div key={i}>
+            <h3 className="font-display text-sm font-semibold text-[#171717] tracking-tight">
+              {course.title}
+            </h3>
+            <p className="text-sm text-neutral-600 mt-1 max-w-xl leading-relaxed">
+              {course.description}
+            </p>
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   )
 }
 
