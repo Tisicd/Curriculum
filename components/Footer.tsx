@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaGlobe, FaInstagram } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
 const Footer: React.FC = () => {
@@ -47,13 +47,40 @@ const Footer: React.FC = () => {
               LinkedIn
             </a>
             <a
-              href="https://github.com/ChrisTisalema"
+              href="https://github.com/Tisicd"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-accent-600 transition-colors"
             >
               <FaGithub />
               GitHub
+            </a>
+            <a
+              href="https://tziwu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-accent-600 transition-colors"
+            >
+              <FaGlobe />
+              tziwu.com
+            </a>
+            <a
+              href="https://lumentuio.tziwu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-accent-600 transition-colors"
+            >
+              <FaGlobe />
+              Lumentuio
+            </a>
+            <a
+              href="https://www.instagram.com/71z1.ec/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-accent-600 transition-colors"
+            >
+              <FaInstagram />
+              Instagram
             </a>
           </div>
         </div>

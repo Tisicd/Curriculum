@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaGlobe, FaInstagram } from 'react-icons/fa'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
@@ -123,13 +123,40 @@ const Header: React.FC = () => {
                     <span>LinkedIn</span>
                   </a>
                   <a
-                    href="https://github.com/ChrisTisalema"
+                    href="https://github.com/Tisicd"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
                   >
                     <FaGithub />
                     <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://tziwu.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
+                  >
+                    <FaGlobe />
+                    <span>tziwu.com</span>
+                  </a>
+                  <a
+                    href="https://lumentuio.tziwu.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
+                  >
+                    <FaGlobe />
+                    <span>Lumentuio</span>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/71z1.ec/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-accent-600 transition-colors"
+                  >
+                    <FaInstagram />
+                    <span>Instagram</span>
                   </a>
                 </motion.div>
               </>
