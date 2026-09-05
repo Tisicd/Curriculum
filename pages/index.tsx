@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Objectives from '../components/Objectives'
+import Especializacion from '../components/Especializacion'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
@@ -11,15 +12,18 @@ import Courses from '../components/Courses'
 import References from '../components/References'
 import Footer from '../components/Footer'
 import PdfButtons from '../components/PdfButtons'
+import { useLanguage } from '../context/LanguageContext'
 
 const Home: NextPage = () => {
+  const { t } = useLanguage()
+
   return (
     <>
       <Head>
-        <title>Christian Tisalema — Ingeniero en Sistemas</title>
-        <meta name="description" content="Ingeniero en Sistemas con enfoque en IA y automatización. Portafolio profesional de Christian Tisalema." />
+        <title>{t.meta.title}</title>
+        <meta name="description" content={t.meta.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="Ingeniería en Sistemas, IA, automatización, desarrollo web, FastAPI, Next.js, Ecuador" />
+        <meta name="keywords" content={t.meta.keywords} />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -32,6 +36,7 @@ const Home: NextPage = () => {
         <main className="max-w-3xl mx-auto px-6 md:px-8">
           <div className="space-y-24 md:space-y-32 py-16 md:py-24">
             <Objectives />
+            <Especializacion />
             <About />
             <Skills />
             <Projects />

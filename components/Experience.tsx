@@ -1,39 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { FaCheck } from 'react-icons/fa'
+import { useLanguage } from '../context/LanguageContext'
 
 const Experience: React.FC = () => {
-  const experiences = [
-    {
-      title: 'Practicante en Desarrollo e Innovación Tecnológica Educativa',
-      meta: 'Instituto de Investigaciones Económicas, UCE \u00b7 360 horas \u00b7 Ago 2024 – Ago 2025',
-      description:
-        'Desarrollé una aplicación web fullstack orientada a reducir la repitencia estudiantil mediante herramientas académicas interactivas. La plataforma —construida con Flask, PostgreSQL, Redis y Docker bajo arquitectura MVC— integró un sistema de autenticación completo con JWT, validación de correos institucionales y paneles personalizados para estudiantes, docentes y administración. Implementé un módulo multimedia con gestión de videos educativos, chatbots de apoyo académico y calculadoras interactivas desarrolladas con JavaScript y MathJS. Configuré Redis para manejo de sesiones seguras y desplegué el entorno completo con Docker, manteniendo control de versiones con GitHub. Además, coordiné la integración de recursos externos como GeoGebra, Desmos, Wolfram Alpha y Photomath en el ecosistema de la plataforma.',
-    },
-    {
-      title: 'Agente de Atención al Cliente y Gestión Comercial',
-      meta: 'Conecta Plus \u00b7 Ecuador \u00b7 2024 – 2025',
-      description:
-        'Gestioné atención a clientes a través de canales telefónicos, aplicando técnicas de comunicación efectiva y negociación para fortalecer la retención y fidelización. Mantuve cumplimiento consistente de KPIs operativos relacionados con productividad, tiempo de atención y calidad de servicio, manejando simultáneamente múltiples solicitudes en entornos de alta demanda. Registré y di seguimiento a casos mediante sistemas CRM, colaborando con equipos de soporte para la escalación oportuna de incidencias complejas.',
-    },
-    {
-      title: 'Técnico Audiovisual y Soporte IT',
-      meta: 'Productora Independiente \u00b7 Ecuador \u00b7 2023 – 2024',
-      description:
-        'Brindé soporte técnico audiovisual en más de 30 sesiones de grabación, operando cámaras con control manual de ISO, obturador y encuadre, y configurando iluminación profesional mediante esquemas Rembrandt y de tres puntos, lo que redujo en un 25% los tiempos de set-up. Gestioné inventario y mantenimiento preventivo de más de 50 equipos, realicé reparaciones básicas de hardware y resolví incidentes de audio con micrófonos lavalier y de condensador en tiempo real. Complementé con producción de contenido digital y documentación de procedimientos operativos.',
-    },
-    {
-      title: 'Mesero de Banquetes',
-      meta: 'Hotel Hilton Colon \u00b7 Ecuador \u00b7 2022 – 2023',
-      description:
-        'Atención a más de 200 clientes por evento en entornos de alto volumen, manteniendo los estándares de servicio de una cadena hotelera internacional. Coordinación en tiempo real con cocina, logística y operaciones, manejo de requerimientos y reclamos con enfoque al cliente, y apoyo en ventas mediante upselling.',
-    },
-    {
-      title: 'Auxiliar de Artes Gráficas',
-      meta: 'Instituto Geográfico Militar \u00b7 Ecuador \u00b7 2018',
-      description:
-        'Gestión de inventario y control de troqueles optimizando en un 20% los tiempos de búsqueda de insumos. Control de calidad visual y dimensional de productos gráficos, suministro logístico de materiales y mantenimiento básico de maquinaria bajo metodología 5S.',
-    },
-  ]
+  const { t } = useLanguage()
+  const experience = t.experience
 
   const container = {
     initial: { opacity: 0 },
@@ -55,7 +27,7 @@ const Experience: React.FC = () => {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <span className="section-label">Experiencia</span>
+      <span className="section-label">{experience.label}</span>
 
       <motion.div
         className="space-y-10"
@@ -64,7 +36,7 @@ const Experience: React.FC = () => {
         whileInView="animate"
         viewport={{ once: true, margin: '-60px' }}
       >
-        {experiences.map((exp, i) => (
+        {experience.entries.map((exp, i) => (
           <motion.div
             key={i}
             {...item}
@@ -79,6 +51,31 @@ const Experience: React.FC = () => {
             <p className="text-[15px] leading-relaxed text-neutral-700 max-w-2xl">
               {exp.description}
             </p>
+            {exp.points && (
+              <ul className="mt-3 space-y-2 max-w-2xl">
+                {exp.points.map((point, pi) => (
+                  <li key={pi} className="flex items-start gap-2.5 text-[15px] leading-relaxed text-neutral-700">
+                    <FaCheck className="text-accent-500 text-xs mt-1.5 flex-shrink-0" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {exp.results && (
+              <div className="mt-4 max-w-2xl rounded-xl border border-accent-200 bg-accent-50 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-accent-700 mb-2">
+                  {exp.resultsLabel}
+                </p>
+                <ul className="space-y-1.5">
+                  {exp.results.map((result, ri) => (
+                    <li key={ri} className="flex items-start gap-2 text-sm text-neutral-700">
+                      <FaCheck className="text-accent-600 text-xs mt-1 flex-shrink-0" />
+                      {result}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </motion.div>
         ))}
       </motion.div>

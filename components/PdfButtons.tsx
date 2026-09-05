@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const PdfButtons: React.FC<{ className?: string }> = ({ className }) => {
+  const { t } = useLanguage()
   const handlePrint = () => {
     window.print()
   }
@@ -25,7 +27,7 @@ const PdfButtons: React.FC<{ className?: string }> = ({ className }) => {
           <path d="M6 12H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2" />
           <rect x="6" y="14" width="12" height="8" />
         </svg>
-        Imprimir / Guardar PDF
+        {t.ui.print}
       </button>
     </motion.div>
   )

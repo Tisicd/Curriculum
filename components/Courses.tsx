@@ -1,19 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const Courses: React.FC = () => {
-  const courses = [
-    {
-      title: 'Cajero Comercial y Bancario',
-      description:
-        'Formación orientada al desempeño competente del rol de cajero bancario, cubriendo aspectos técnicos, normativos y de atención al cliente.',
-    },
-    {
-      title: 'Asistente de Crédito y Cobranzas',
-      description:
-        'Habilidades analíticas, técnicas y de comunicación para la gestión efectiva de créditos y cobranzas, asegurando el cumplimiento de regulaciones y políticas establecidas.',
-    },
-  ]
+  const { t } = useLanguage()
+  const courses = t.courses
 
   return (
     <motion.section
@@ -22,10 +13,10 @@ const Courses: React.FC = () => {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <span className="section-label">Cursos</span>
+      <span className="section-label">{courses.label}</span>
 
       <div className="space-y-5">
-        {courses.map((course, i) => (
+        {courses.entries.map((course, i) => (
           <div key={i}>
             <h3 className="font-display text-sm font-semibold text-[#171717] tracking-tight">
               {course.title}

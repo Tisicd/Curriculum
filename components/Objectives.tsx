@@ -1,7 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const Objectives: React.FC = () => {
+  const { t } = useLanguage()
+  const objetivo = t.objetivo
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 16 }}
@@ -9,17 +13,13 @@ const Objectives: React.FC = () => {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <span className="section-label">Objetivo</span>
+      <span className="section-label">{objetivo.label}</span>
       <p className="text-lg leading-relaxed text-neutral-700 max-w-2xl">
-        Integrarme como{' '}
+        {objetivo.intro}{' '}
         <strong className="font-semibold text-[#171717]">
-          Ingeniero en Sistemas con enfoque en IA y automatización
+          {objetivo.role}
         </strong>{' '}
-        en un equipo donde pueda aplicar mis habilidades en desarrollo de software,
-        arquitecturas backend modernas y soluciones basadas en inteligencia artificial.
-        Busco contribuir desde el primer día en proyectos de impacto —ya sea en pasantías,
-        posiciones trainee o colaboraciones freelance— mientras construyo una trayectoria
-        sólida en el sector tecnológico ecuatoriano y latinoamericano.
+        {objetivo.detail}
       </p>
     </motion.section>
   )

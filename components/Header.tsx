@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaGlobe, FaInstagram } from 'react-icons/fa'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useLanguage, LanguageToggle } from '../context/LanguageContext'
 
 const fadeInUp = {
   initial: { opacity: 0, y: 12 },
@@ -10,6 +11,7 @@ const fadeInUp = {
 
 const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false)
+  const { t } = useLanguage()
   useEffect(() => { setMounted(true) }, [])
 
   const downloadCV = () => {
@@ -82,10 +84,13 @@ const Header: React.FC = () => {
                     Christian Tisalema
                   </h1>
                   <p className="font-display text-lg md:text-xl text-accent-600 font-medium mb-2">
-                    Ingeniero en Sistemas con enfoque en IA y automatización
+                    {t.header.subtitle}
+                  </p>
+                  <p className="font-display text-[13px] text-neutral-500 font-medium">
+                    {t.header.tagline}
                   </p>
                   <p className="text-[13px] text-neutral-500 mt-1">
-                    Egresado — Malla curricular completa — Título en trámite (examen complexivo, diciembre 2026)
+                    {t.header.status}
                   </p>
                 </motion.div>
 
@@ -104,7 +109,7 @@ const Header: React.FC = () => {
                   </a>
                   <span className="inline-flex items-center gap-2">
                     <FaMapMarkerAlt className="text-accent-400 text-xs" />
-                    <span>Quito, Ecuador</span>
+                    <span>{t.header.location}</span>
                   </span>
                 </motion.div>
 
@@ -167,8 +172,9 @@ const Header: React.FC = () => {
             <motion.div
               {...fadeInUp}
               transition={{ ...transition, delay: 0.3 }}
-              className="no-print flex-shrink-0"
+              className="no-print flex flex-col items-start gap-4 flex-shrink-0"
             >
+              <LanguageToggle />
               <button
                 onClick={downloadCV}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
@@ -180,7 +186,7 @@ const Header: React.FC = () => {
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                Descargar CV
+                {t.header.download}
               </button>
             </motion.div>
           )}

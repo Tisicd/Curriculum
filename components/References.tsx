@@ -1,25 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaPhone } from 'react-icons/fa'
+import { useLanguage } from '../context/LanguageContext'
 
 const References: React.FC = () => {
-  const references = [
-    {
-      name: 'Wellington Yepez',
-      role: 'Seguridad y Prevención',
-      phone: '099 993 0086',
-    },
-    {
-      name: 'Jefferson Albuja',
-      role: 'Desarrollador Senior',
-      phone: '096 299 2697',
-    },
-    {
-      name: 'Christian Pilapanta',
-      role: 'Productor Musical',
-      phone: '098 468 1015',
-    },
-  ]
+  const { t } = useLanguage()
+  const references = t.references
 
   return (
     <motion.section
@@ -28,10 +14,10 @@ const References: React.FC = () => {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <span className="section-label">Referencias</span>
+      <span className="section-label">{references.label}</span>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        {references.map((ref, i) => (
+        {references.entries.map((ref, i) => (
           <div key={i}>
             <p className="font-display text-sm font-semibold text-[#171717]">
               {ref.name}

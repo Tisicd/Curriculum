@@ -1,22 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const Education: React.FC = () => {
-  const education = [
-    {
-      title: 'Ingeniería en Sistemas Informáticos',
-      institution: 'Universidad Central del Ecuador',
-      meta: 'Egresado — Malla curricular completa',
-      description:
-        'Todos los créditos académicos aprobados. Título en trámite mediante examen complexivo (programado diciembre 2026). Formación integral en ciencias de la computación, desarrollo de software, bases de datos, inteligencia artificial y gestión de proyectos tecnológicos.',
-    },
-    {
-      title: 'Bachiller en Ciencias',
-      institution: 'Instituto Nacional Mejía',
-      meta: '2014 – 2016',
-      description: 'Miembro del club de Taekwondo durante el período académico.',
-    },
-  ]
+  const { t } = useLanguage()
+  const education = t.education
 
   return (
     <motion.section
@@ -25,10 +13,10 @@ const Education: React.FC = () => {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <span className="section-label">Educación</span>
+      <span className="section-label">{education.label}</span>
 
       <div className="space-y-8">
-        {education.map((edu, i) => (
+        {education.entries.map((edu, i) => (
           <div key={i}>
             <h3 className="font-display text-base font-semibold text-[#171717] tracking-tight">
               {edu.title}

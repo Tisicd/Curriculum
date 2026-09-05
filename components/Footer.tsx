@@ -1,8 +1,11 @@
 import React from 'react'
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaGlobe, FaInstagram } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../context/LanguageContext'
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage()
+
   return (
     <motion.footer
       className="border-t border-neutral-200 mt-24"
@@ -18,7 +21,7 @@ const Footer: React.FC = () => {
               Christian Tisalema
             </p>
             <p className="text-xs text-neutral-500 mt-1">
-              Ingeniero en Sistemas con enfoque en IA y automatización
+              {t.ui.footerTagline}
             </p>
           </div>
 
